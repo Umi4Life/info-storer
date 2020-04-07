@@ -12,6 +12,16 @@ const message = new DataStorage({
     }
 });
 
+const json = new DataStorage({
+    // We'll call our data file 'user-preferences'
+    configName: 'Json',
+    defaults: {
+        json: []
+    }
+});
+
+
+
 
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -23,6 +33,9 @@ export default new Vuex.Store({
         setMessage (state, payload) {
             message.set("message", payload)
         },
+        setJson (state, payload) {
+            json.set("json", payload)
+        },
     },
     actions: {
     },
@@ -32,5 +45,8 @@ export default new Vuex.Store({
         getMessage () {
             return message.get("message")
         },
+        getJson(){
+            return json.get("json")
+        }
     }
 })
