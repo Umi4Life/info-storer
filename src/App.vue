@@ -52,8 +52,22 @@
                 <!--temporary-->
         <!--/>-->
 
+
+
         <v-content>
-          <HelloWorld/>
+        <v-container
+                class="fill-height"
+                fluid
+        >
+            <v-row
+                    align="center"
+            >
+                <v-col class="text-center">
+          <h1 v-if="loading"> <v-progress-circular indeterminate/></h1>
+          <HelloWorld v-else/>
+                </v-col>
+            </v-row>
+        </v-container>
         </v-content>
 
         <!--<v-navigation-drawer-->
@@ -77,7 +91,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
-
+import store from "./store"
 export default {
   name: 'App',
   props: {
@@ -94,5 +108,11 @@ export default {
       right: false,
       left: false,
   }),
+  computed: {
+      loading () {
+          return store.getters.getLoading
+      },
+
+  },
 };
 </script>
